@@ -1,0 +1,10 @@
+CREATE DATABASE IF NOT EXISTS user_management;
+
+USE user_management;
+
+CREATE TABLE IF NOT EXISTS users (
+    id BINARY(16) PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    age INT NOT NULL
+);

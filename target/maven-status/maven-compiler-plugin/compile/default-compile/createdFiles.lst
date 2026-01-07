@@ -1,3 +1,4 @@
 com\example\usermanagement\SimpleUserServer$User.class
+com\example\usermanagement\repository\UserRepository.class
 com\example\usermanagement\SimpleUserServer.class
 com\example\usermanagement\SimpleUserServer$UserHandler.class

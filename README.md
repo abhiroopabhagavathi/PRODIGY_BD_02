@@ -1,12 +1,60 @@
-# User Management Backend - PRODIGY_BD_01
+# User Management Backend with MySQL - PRODIGY_BD_02
 
-A RESTful API for user management built with Spring Boot and Java.
+A RESTful API for user management built with Spring Boot, Java, and MySQL database for persistent storage.
 
 ## Features
 - Create, Read, Update, Delete (CRUD) operations for users
 - RESTful API endpoints
-- In-memory data storage
+- MySQL database for persistent storage
+- JPA/Hibernate ORM integration
+- Connection pooling with HikariCP
+- Environment-specific configurations
+- Database migrations
 - JSON request/response format
+
+## Technologies Used
+- Java 21
+- Spring Boot 3.3.0
+- Spring Data JPA
+- MySQL 8.0+
+- HikariCP (Connection Pooling)
+- Maven
+- Environment Variables (.env)
+
+## Prerequisites
+- Java 17+
+- MySQL 8.0+
+- Maven 3.6+
+
+## Setup Instructions
+
+### 1. Database Setup
+```sql
+CREATE DATABASE user_management;
+```
+
+### 2. Environment Configuration
+Create `.env` file in project root:
+```
+DB_HOST=localhost
+DB_PORT=3306
+DB_NAME=user_management
+DB_USERNAME=root
+DB_PASSWORD=your_password
+DB_POOL_SIZE=10
+```
+
+### 3. Run Application
+```bash
+mvn spring-boot:run
+```
+
+## Database Schema
+The application automatically creates the `users` table with:
+- `id` (BINARY(16)) - Primary Key (UUID)
+- `name` (VARCHAR(255)) - User name
+- `email` (VARCHAR(255)) - Unique email
+- `age` (INT) - User age
 
 ## API Endpoints
 

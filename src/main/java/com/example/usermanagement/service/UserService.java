@@ -1,37 +1,40 @@
 package com.example.usermanagement.service;
 
 import com.example.usermanagement.model.User;
+import com.example.usermanagement.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 @Service
 public class UserService {
-    private final Map<UUID, User> store = new HashMap<>();
+    private final UserRepository repository;
+
+    public UserService(UserRepository repository) {
+        this.repository = repository;
+    }
 
     public User addUser(User user) {
-        UUID id = UUID.randomUUID();
-        user.setId(id);
-        store.put(id, user);
-        return user;
+        return repository.save(user);
     }
 
     public List<User> getAllUsers() {
-        return new ArrayList<>(store.values());
+        return repository.findAll();
     }
 
     public User getUser(UUID id) {
-        return store.get(id);
+        return repository.findById(id).orElse(null);
     }
 
     public User updateUser(UUID id, User user) {
-        if (!store.containsKey(id)) return null;
+        if (!repository.existsById(id)) return null;
         user.setId(id);
-        store.put(id, user);
-        return user;
+        return repository.save(user);
     }
 
     public boolean deleteUser(UUID id) {
-        return store.remove(id) != null;
+        if (!repository.existsById(id)) return false;
+        repository.deleteById(id);
+        return true;
     }
 }
