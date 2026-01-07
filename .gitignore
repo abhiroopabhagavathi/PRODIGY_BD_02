@@ -1,0 +1,13 @@
+# Environment variables
+.env
+
+# IDE files
+.vscode/
+.idea/
+
+# Maven
+target/
+
+# OS files
+.DS_Store
+Thumbs.db
